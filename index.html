@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Bank USA - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header img {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+        header h1 {
+            font-size: 32px;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin: 40px auto;
+        }
+        h2 {
+            color: #004080;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0059b3;
+        }
+        .alert-box {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .success-box {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .success-box::before {
+            content: "✔ ";
+            color: green;
+        }
+        .timer {
+            color: red;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        let countdown = 300;
+
+        function showUrgentAlert() {
+            var alertBox = document.getElementById('alert');
+            alertBox.style.display = 'block';
+            alertBox.textContent = 'URGENT: Please enter your checking account and PIN to resolve an issue immediately!';
+            
+            // Display countdown timer
+            document.getElementById('timer').style.display = 'block';
+            startCountdown();
+        }
+
+        function startCountdown() {
+            var timer = document.getElementById('timer');
+            timer.textContent = 'Time remaining: ' + countdown + ' seconds';
+            var countdownInterval = setInterval(function() {
+                countdown--;
+                timer.textContent = 'Time remaining: ' + countdown + ' seconds';
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    timer.textContent = 'Time is up!';
+                }
+            }, 1000);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            document.getElementById('alert').style.display = 'none';
+            document.getElementById('timer').style.display = 'none';
+            
+            // Show success message
+            var successBox = document.getElementById('success');
+            successBox.style.display = 'block';
+            successBox.textContent = 'Thank you, the issue has been fixed!';
+        }
+
+        window.onload = function() {
+            // Show the urgent alert 2 seconds after page load
+            setTimeout(showUrgentAlert, 100);
+        };
+    </script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="image.png" alt="Bank Logo">
+        <h1>Safety Bank USA</h1>
+    </header>
+
+    <!-- Login Form -->
+    <div class="container">
+        <h2>Bank Account Login</h2>
+        <div id="alert" class="alert-box"></div>
+        <div id="timer" class="timer"></div>
+        <form onsubmit="handleSubmit(event)">
+            <input type="text" placeholder="Checking Account Number" required>
+            <input type="password" placeholder="PIN" required>
+            <button type="submit">Login</button>
+        </form>
+        <div id="success" class="success-box"></div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Customer Service: 1-800-FAKEBANK</p>
+        <p>Email: support@safetybankusa.com</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+</html>
