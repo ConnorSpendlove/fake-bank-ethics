@@ -20,3 +20,7 @@ This site is just a mock-up I created for fun to talk about ethical and security
 - Don’t enter real personal info—this is a fake site made for an assignment.
 - Everything on here (emails, phone numbers, etc.) is made up.
 
+ ## Live URL:
+ https://connorspendlove.github.io/fake-bank-ethics/ 
+
+
